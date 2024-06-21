@@ -1,0 +1,22 @@
+
+
+name: Linux Build
+
+on: push
+
+jobs:
+  build:
+    name: Build on Ubuntu
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        ref: 67d11619d506ccb695ecfe9fd647e150e93715ed
+    - name: Install Dependencies
+      run: |
+        sudo apt install -y libgtk-3-dev libwebkit2gtk-4.0-dev
+    - name: Build C Code
+      run: |
+        cd script
+        ./build.sh
